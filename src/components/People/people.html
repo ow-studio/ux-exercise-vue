@@ -1,0 +1,30 @@
+<div v-show="people.length" class="mb-4">
+  <h1 class="mb-4"><i class="fa fa-user"></i> People</h1>
+
+  <div class="form-group">
+    <input class="form-control" placeholder="Filter people..." v-model="peopleFilter">
+  </div>
+
+  <div class="summary">
+    <h2>Summary</h2>
+    <p><strong>Count:</strong>{{people.length}}</p>
+    <p><strong>Avg Height:</strong>{{peopleSummary.avgHeight}}</p>
+    <p><strong>Avg Weight:</strong>{{peopleSummary.avgMass}}</p>
+  </div>
+
+  <transition-group
+    tag="div"
+    class="list-group"
+    :css="false"
+    @before-enter="handleBeforeEnter"
+    @enter="handleEnter">
+    <router-link v-if="filteredPeople.length"
+                 class="list-group-item"
+                 v-for="(person, index) in filteredPeople"
+                 :key="index"
+                 :data-index="index"
+                 :to="{ name: 'people', params: { id: person.id }}">
+      #{{ index+1 }} {{ person.name }}
+    </router-link>
+  </transition-group>
+</div>
