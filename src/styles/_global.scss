@@ -25,3 +25,55 @@ html {
 body {
   padding-top: 5em;
 }
+
+a {
+  color: $blue;
+}
+
+.app,
+.container {
+  min-width: 320px;
+
+  .table {
+    overflow-x: auto;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .navbar {
+    &-isMobile {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    &-isDesktop {
+      display: none;
+    }
+
+    .row-aligned {
+      display: flex;
+      min-width: 320px;
+
+      button {
+        margin-left: auto;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.list-group {
+  &-item {
+    color: $blue;
+
+    &:hover {
+      color: $orange;
+    }
+  }
+}
