@@ -1,16 +1,48 @@
-<nav class="navbar fixed-top navbar-toggleable-sm navbar-inverse bg-inverse">
+<div>
+    <!--
+        Note: Typically I would use something like v-if here to dynamically render the content,
+        however there are two limitations which prevent me:
+        1. Lack of experience using vuejs, this is my first time.
+        2. Boostrap itself, it is not working as expected in a "responsive" way, I felt forced to do the below work-around.
+    -->
+  <!-- mobile -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-inverse bg-inverse navbar-isMobile">
+    <div class="row-aligned">
+      <router-link class="navbar-brand" to="/">
+        <img alt="Brand" src="~assets/images/logo.png" height="20">
+      </router-link>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNav" aria-controls="topNav"
+        aria-expanded="false" aria-label="Toggle navigation" v-on:click="isVisible = !isVisible">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <ul class="navbar-nav mr-auto" v-if="isVisible">
+      <router-link class="nav-item" tag="li" to="/" exact>
+        <a class="nav-link"><i class="fa fa-home"></i> Home</a>
+      </router-link>
+      <router-link class="nav-item" tag="li" to="/people" exact>
+        <a class="nav-link"><i class="fa fa-user"></i> People</a>
+      </router-link>
+      <router-link class="nav-item" tag="li" to="/vehicles" exact>
+        <a class="nav-link"><i class="fa fa-rocket"></i> Vehicles</a>
+      </router-link>
+    </ul>
+  </nav>
+  <!-- desktop -->
+  <nav class="navbar fixed-top navbar-toggleable-sm navbar-inverse bg-inverse navbar-isDesktop">
     <router-link class="navbar-brand" to="/">
       <img alt="Brand" src="~assets/images/logo.png" height="20">
     </router-link>
-  <ul class="navbar-nav">
-    <router-link class="nav-item" tag="li" to="/" exact>
-      <a class="nav-link"><i class="fa fa-home"></i> Home</a>
-    </router-link>
-    <router-link class="nav-item" tag="li" to="/people" exact>
-      <a class="nav-link"><i class="fa fa-user"></i> People</a>
-    </router-link>
-    <router-link class="nav-item" tag="li" to="/vehicles" exact>
-      <a class="nav-link"><i class="fa fa-rocket"></i> Vehicles</a>
-    </router-link>
-  </ul>
-</nav>
+    <ul class="navbar-nav">
+      <router-link class="nav-item" tag="li" to="/" exact>
+        <a class="nav-link"><i class="fa fa-home"></i> Home</a>
+      </router-link>
+      <router-link class="nav-item" tag="li" to="/people" exact>
+        <a class="nav-link"><i class="fa fa-user"></i> People</a>
+      </router-link>
+      <router-link class="nav-item" tag="li" to="/vehicles" exact>
+        <a class="nav-link"><i class="fa fa-rocket"></i> Vehicles</a>
+      </router-link>
+    </ul>
+  </nav>
+</div>
